@@ -128,7 +128,7 @@ The code contains comments explaining the purpose of important steps rather than
 
 # 🧩 5. LeetCode Problems
 
-The repository also contains solutions to **18 common LeetCode problems** covering different data structures, algorithms, and problem-solving patterns.
+The repository also contains solutions to **Common LeetCode problems** covering different data structures, algorithms, and problem-solving patterns.
 
 ### Arrays & Hash Maps
 
@@ -143,37 +143,35 @@ The repository also contains solutions to **18 common LeetCode problems** coveri
 6. **Container With Most Water**
 7. **Longest Substring Without Repeating Characters**
 
-### Stack & Binary Search
+### Stack
 
 8. **Valid Parentheses**
-9. **Binary Search**
 
 ### Linked Lists
 
-10. **Reverse Linked List**
+9. **Reverse Linked List**
 
 ### Trees
 
-11. **Maximum Depth of Binary Tree**
-12. **Binary Tree Level Order Traversal**
+10. **Maximum Depth of Binary Tree**
 
 ### Heap / Selection
 
-13. **Kth Largest Element**
+11. **Kth Largest Element**
 
 ### Graphs
 
-14. **Number of Islands**
-15. **Course Schedule**
+12. **Number of Islands**
+13. **Course Schedule**
 
 ### Recursion / Backtracking
 
-16. **Subsets**
+14. **Subsets**
 
 ### Dynamic Programming
 
-17. **Climbing Stairs**
-18. **Coin Change**
+15. **Climbing Stairs**
+16. **Coin Change**
 
 These problems provide practical examples of applying DSA concepts to real problem-solving scenarios.
 
@@ -236,16 +234,16 @@ DSA-Masterclass/
 │   └── Greedy.js
 │
 ├── Data-Structures/
-│   ├── Array.js
-│   ├── LinkedList
+│   ├── Linked-List
 │   │   ├── Singly.js
 │   │   └── Doubly.js
+│   ├── Array.js
+│   ├── BST.js
+│   ├── Graph.js
 │   ├── HashMap.js
-│   ├── Stack.js
-│   ├── Queue.js
-│   ├── Tree.js
 │   ├── Heap.js
-│   └── Graph.js
+│   ├── Queue.js
+│   └── Stack.js
 │
 ├── LeetCode/
 │   ├── twoSum.js
@@ -259,7 +257,6 @@ DSA-Masterclass/
 │   ├── binarySearch.js
 │   ├── reverseLinkedList.js
 │   ├── maximumDepthOfBinaryTree.js
-│   ├── binaryTreeLevelOrderTraversal.js
 │   ├── kthLargestElement.js
 │   ├── numberOfIslands.js
 │   ├── courseSchedule.js
