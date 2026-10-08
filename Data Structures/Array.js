@@ -71,19 +71,37 @@ class myArray {
         if (this.length === 0) {
             throw new Error('Array is empty');
         }
+
         const firstValue = this.data[0];
-        delete this.data[0];
+
+        // Move each element one position to the left
+        for (let i = 0; i < this.length - 1; i++) {
+            this.data[i] = this.data[i + 1];
+        }
+
+        // Delete the last element to avoid a stale value
+        delete this.data[this.length - 1];
+
         this.length--;
         return firstValue;
     }
 
     // Method to delete a value at a specific index
-    delete(index) {
+    deleteAt(index) {
         if (index < 0 || index >= this.length) {
             throw new Error('Index out of bounds');
         }
+
         const deletedValue = this.data[index];
-        delete this.data[index];
+
+        // Shift all subsequent elements one position left
+        for (let i = index; i < this.length - 1; i++) {
+            this.data[i] = this.data[i + 1];
+        }
+
+        // Remove the duplicate last element
+        delete this.data[this.length - 1];
+
         this.length--;
         return deletedValue;
     }
