@@ -177,19 +177,19 @@ class DoublyLinkedList {
     }
 
     // Method to remove a node at a specific index
-    remove(index) {
+    removeAt(index) {
         if (index < 0 || index >= this.length) {
             throw new Error('Index out of bounds');
         }
 
         // If removing from the beginning, use shift
         if (index === 0) {
-            return this.shift();
+            return this.removeFirst();
         }
 
         // If removing from the end, use pop
         if (index === this.length - 1) {
-            return this.pop();
+            return this.remove();
         }
 
         // Find the node at the specified index
