@@ -17,6 +17,7 @@
         - Leaf → Node with no children (20, 40, 60, 80)
         - Edge → Connection between two nodes
         - Height → Longest path from a node to a leaf
+        - Depth → How far a node is from the root
         - Subtree → A smaller tree inside the main tree
     - Complexity:
         - Insert / Search / Remove: O(log n)
@@ -147,8 +148,9 @@ class BST {
     min(node = this.root) {
         if (node === null) return null;
     
-        let current = node;
+        let current = node; // Starting point
     
+        // If (left < node) keep going left until you found the smallest node
         while (current.left !== null) current = current.left;
     
         return current;
@@ -157,68 +159,95 @@ class BST {
     max(node = this.root) {
         if (node === null) return null;
 
-        let current = node;
+        let current = node; // Starting point
 
+        // If (right > node) keep going right until you found the biggest node
         while (current.right !== null) current = current.right;
 
         return current;
     }
 
-    preorder(node = this.root, data = []) {
-	    // Recursion base case
+    // 1. PRE-ORDER: Root -> Left -> Right
+    preOrder(node = this.root, data = []) {
+	    // Base case: there is no node to process.
         if(node === null) return data;
-        // ! Storing starts from the root
+
+        // Visit the current node FIRST before it's children.
         data.push(node.value);
     
-        // Recursion
-        if(node.left) this.preorder(node.left, data);
-        if(node.right) this.preorder(node.right, data);
+        // Then explore the left subtree.
+        if(node.left) this.preOrder(node.left, data);
+
+        // Finally explore the right subtree.
+        if(node.right) this.preOrder(node.right, data);
     
         return data;
     }
 
-    inorder(node = this.root, data = []) {
-        // Recursion base case
+    inOrder(node = this.root, data = []) {
+        // Base case: there is no node to process.
         if(node === null) return data;
     
-        // Recursion
-        if(node.left) this.inorder(node.left, data);
+        // Explore the left subtree.
+        if(node.left) this.inOrder(node.left, data);
     
-        // ! Storing starts from the leaf node
+        // Visit the current node BETWEEN it's children.
         data.push(node.value);
     
-        // Recursion
-        if(node.right) this.inorder(node.right, data);
+        // Finally explore the right subtree.
+        if(node.right) this.inOrder(node.right, data);
     
         return data;
     }
 
-    postorder(node = this.root, data = []) {
-        // Recursion base case
+    postOrder(node = this.root, data = []) {
+        // Base case: there is no node to process.
         if(node === null) return data;
     
-        // Recursion
-        if(node.left) this.postorder(node.left, data);
-        if(node.right) this.postorder(node.right, data);
+        // Explore the left subtree.
+        if(node.left) this.postOrder(node.left, data);
+
+        // Explore the right subtree.
+        if(node.right) this.postOrder(node.right, data);
     
-        // ! Storing starts from the leaf node
+        // Visit the current node LAST after it's children.
         data.push(node.value);
         return data;
     }
 
-    levelorder() {
+    levelOrder() {
         if (this.root === null) return [];
     
+        // A queue processes nodes in FIFO order.
         const queue = [this.root];
         const data = [];
-    
+
+        // Process nodes while unvisited queue entries remain.
+        // Instead of this loop you can use
+        /*
+            let front = 0;
+            while (front < queue.length) {
+                const current = queue[front];
+                front++; // Dequeue without using Array.shift()
+
+                data.push(current.value);
+
+                ...
+            }
+
+        */
         while (queue.length > 0) {
             const current = queue.shift();
         
             data.push(current.value);
         
-            if (current.left) queue.push(current.left);
-            if (current.right) queue.push(current.right);
+            // Enqueue left child before right child.
+            if (current.left) {
+                queue.push(current.left);
+            }
+            if (current.right) {
+                queue.push(current.right);
+            }
         };
     
         return data;
