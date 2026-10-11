@@ -70,7 +70,7 @@ class Graph {
 	    if(!this.adjacencyList[vertex1] && !this.adjacencyList[vertex2]) return;
 
         // Remove the connection in BOTH directions
-		this.adjacencyList[vertex1] = this.adjacencyList[vertex2].filter(v => v !== vertex2);
+		this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(v => v !== vertex2);
         this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(v => v !== vertex1);
         
         return this;
@@ -81,7 +81,9 @@ class Graph {
         console.log('Graph:');
         let j = 1;
         for (let i in this.adjacencyList) {
-            console.log(`${j}. Vertex(${i}) => Edge(${[...this.adjacencyList[i]].join(" — ")})`);
+            console.log(
+                `${j}. Vertex(${i}) => Edges(${i} — ${[...this.adjacencyList[i]].join(`, ${i} — `)})`
+            );
             j++;
         }
     }
