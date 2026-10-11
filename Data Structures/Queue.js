@@ -61,4 +61,4 @@ class Queue {
         this.length--; // Decrement the length of the queue
         return removedNode.data; // Return the data of the removed node
     }
-}
+};

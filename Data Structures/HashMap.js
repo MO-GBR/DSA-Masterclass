@@ -86,7 +86,7 @@ class HashMap {
 	    for(let i = 0; i < this.keyMap.length; i++) {
             // Loop through each array inside the key-map
 		    if(this.keyMap[i]) {
-			    for(let j = 0; j < this.keyMap[i].length; j++) { // 2-2
+			    for(let j = 0; j < this.keyMap[i].length; j++) {
 				    // Push the keys and values
                     const entry = [this.keyMap[i][j][0], this.keyMap[i][j][1]];
 				    data.push(entry);
@@ -109,8 +109,8 @@ class HashMap {
 
         console.log(`Map(${map.length}) {`);
         for (let [key, value] of map) {
-            console.log(`   ${key} => ${value}`)
+            console.log(`   ${key} => ${value}`);
         };
-        console.log('}')
+        console.log('}');
     }
 };
