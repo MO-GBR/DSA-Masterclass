@@ -4,9 +4,10 @@
     🔑 Keywords: two numbers, target, sum, pair
     🎯 Main problem: Find two elements whose sum equals a target.
     🧱 Data Structure: Hash Map
+	⏱️Complexity
+        - Time:  O(n)
+        - Space: O(n)
 */
-
-const numbers = [1, 2, 3, 4, 5]; // Target is 7
 
 function twoSum(nums, target) {
 	const map = new Map();
@@ -22,4 +23,4 @@ function twoSum(nums, target) {
 	return [];
 }
 
-console.log(twoSum(numbers, 7)); // Output: [ 2, 3 ]
+console.log(twoSum([1, 2, 3, 4, 5], 7)); // Output: [ 2, 3 ]

@@ -5,27 +5,40 @@
     🎯 Main problem: Find two positions that maximize: (width × smaller height)
     ⚙️ Algorithm: Greedy
     🧩 Pattern: Two Pointers
+	⏱️Complexity
+        - Time:  O(n)
+        - Space: O(1)
 */
 
-function maxArea(height) {
+function maxArea(heights) {
 	let left = 0;
-	let right = height.length - 1;
-	let max = 0;
-	
+	let right = heights.length - 1;
+
+	let maxWater = 0;
+
+	// Continue while the pointers haven't met
 	while (left < right) {
+		// Calculate the distance between the walls
 	    const width = right - left;
-	    const area = width * Math.min(height[left], height[right]);
+
+		// The shorter wall determines the water height
+		const height = Math.min(heights[left], heights[right]);
+
+		// Calculate the water this container can hold
+	    const area = width * height;
 	    
-	    max = Math.max(max, area);
-	    
-	    if (height[left] < height[right]) {
+		// Keep the maximum area found so far
+	    maxWater = Math.max(maxWater, area);
+		
+		// Move the shorter wall inward
+	    if (heights[left] < heights[right]) {
 		    left++;
 	    } else {
 		    right--;
 		}
 	}
 	
-	return max;
+	return maxWater;
 };
 
 console.log(maxArea([1,8,6,2,5,4,8,3,7])); // Output: 49

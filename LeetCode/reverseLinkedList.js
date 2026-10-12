@@ -5,6 +5,10 @@
     🎯 Main problem: Reverse the direction of every (next) pointer.
     🧱 Data Structure: Linked List
     🧩 Pattern: Pointer Manipulation
+	⏱️Complexity
+		- Iterative & Recursive 👉 Time: O(n)
+		- Iterative 👉 Space: O(1)
+		- Recursive 👉 Space: O(n)
 */
 
 // 1 → 2 → 3 → null
@@ -18,17 +22,32 @@ const LinkedList = {
 };
 
 function reverseList(head) {
+	// The node that should come before the current node in the reversed list. Starts as null.
 	let prev = null;
+	// The node whose next pointer we are reversing. Starts at the head.
 	let current = head;
 	
+	// Continue until we have processed every node
 	while (current) {
-	    const next = current.next;
+		// STEP 1: Save the next node before changing the link.
+        // This prevents losing access to the remaining list.
+	    const next = current.next; // Temporarily saves the next node so we don't lose access to the remaining list.
+
+		// STEP 2: Reverse the current node's pointer.
+        // Instead of pointing forward, it points to prev.
 	    current.next = prev;
-	    
+
+	    // STEP 3: Move prev forward to the current node.
+        // The reversed portion now includes this node.
 	    prev = current;
+
+		// STEP 4: Move current forward to the saved next node.
+        // Continue working on the un-reversed portion.
 	    current = next;
 	}
-	
+
+	// All links are reversed.
+    // prev points to the last node, which is the new head.
 	return prev;
 };
 

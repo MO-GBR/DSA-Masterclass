@@ -5,6 +5,7 @@
     🎯 Main problem: Find the longest contiguous section that satisfies a condition.
     🧱 Data Structure: Set
     🧩 Pattern: 🔥 Sliding Window 👉 This is a HUGE interview pattern.
+	⏱️ Complexity: O(n)
 */
 
 function lengthOfLongestSubstring(s) {

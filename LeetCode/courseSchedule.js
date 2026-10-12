@@ -5,13 +5,16 @@
     🎯 Main problem: Determine whether a dependency graph contains a cycle.
     🧱 Data Structure: Graph
     🧩 Pattern: Topological Sort / Cycle Detection
+	⏱️Complexity of time & space: O(V + E)
+        - V: number of course
+        - E: number of prerequisite relationships
 */
 
 const numCourses = 2;
 
 const prerequisites = [
-	[1, 0], // You will need course 1, to finsih course 0
-	[0, 1] // You will need course 1, to finsih course 0
+	[1, 0], // You will need course 0, to finish course 1
+	[0, 1] // You will need course 1, to finish course 0
 ];
 
 function canFinish(numCourses, prerequisites) {

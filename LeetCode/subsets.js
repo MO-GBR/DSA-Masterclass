@@ -5,27 +5,35 @@
     🎯 Main problem: Generate every possible combination of choices.
     🧱 Data Structure: Array
     🧩 Pattern: Backtracking + Recursion
+	⏱️ Complexity
+		- Time: O(n × 2^n)
+		- Space: O(n)
 */
 
 function subsets(nums) {
 	const result = [];
 	
 	function backtrack(index, current) {
+		// Base case: Every decision has been made we keep going (index + 1) until we hit our limit
 	    if (index === nums.length) {
 		    result.push([...current]);
 		    return;
 	    }
 	    
-	    // Include
+	    // Include: Make a choice
 	    current.push(nums[index]);
-	    
+
+	    // Explore
 	    backtrack(index + 1, current);
 	    
+		// Undo
 	    current.pop();
 	    
 	    // Exclude
 	    backtrack(index + 1, current);
-	}
+	};
+
+	// Start from index 0
 	backtrack(0, []);
 	
 	return result;

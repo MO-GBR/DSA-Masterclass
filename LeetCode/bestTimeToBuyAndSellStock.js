@@ -4,23 +4,40 @@
     🔑 Keywords: maximum profit, buy, sell, later day
     🎯 Main problem: Find the biggest difference between a later value and an earlier minimum value.
     🧩 Pattern: One Pass + Track Minimum
+	⏱️Complexity
+        - Time:  O(n)
+        - Space: O(1)
 */
 
-const stocks = [7, 1, 5, 3, 6, 4]
+const stocks = [7, 1, 5, 3, 6, 4];
+
 
 function maxProfit(prices) {
+	// Cheapest price encountered so far
 	let minPrice = Infinity;
+
+	// Best profit found so far
 	let maxProfit = 0;
-	
-	for (const price of prices) {
-	    minPrice = Math.min(minPrice, price);
-	    
-	    const profit = price - minPrice;
-	    
-	    maxProfit = Math.max(maxProfit, profit);
-	}
-	
+
+	// Visit each day's stock price
+	for (let i = 0; i < prices.length; i++) {
+    	const currentPrice = prices[i];
+
+    	// If today's price is cheaper, update the minimum
+    	if (currentPrice < minPrice) {
+    		minPrice = currentPrice;
+    	}
+
+    	// Calculate the profit if we sell today
+    	const profit = currentPrice - minPrice;
+
+    	// Keep the best profit found so far
+    	if (profit > maxProfit) {
+    		maxProfit = profit;
+    	}
+  	}
+
 	return maxProfit;
-}
+};
 
 console.log(maxProfit(stocks)); // Output: 5
