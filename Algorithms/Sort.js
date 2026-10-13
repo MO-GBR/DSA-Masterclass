@@ -30,11 +30,12 @@ const mergeSort = (arr) => {
 
     // Split the array into two halves
     const mid = Math.floor(myArray.length / 2);
-    const left = myArray.slice(0, mid);
-    const right = myArray.slice(mid);
+    
+    // Recursively sort both halves
+    const left = mergeSort(myArray.slice(0, mid));
+    const right = mergeSort(myArray.slice(mid));
 
-    // Recursively sort both halves and merge them
-    return merge(mergeSort(left), mergeSort(right));
+    return merge(left, right);
 };
 
 // Quick sort
@@ -68,20 +69,20 @@ const insertionSort = (arr) => {
 
     // Loop through the array starting from the second element
     for (let i = 1; i < myArray.length; i++) {
-        // Store the current element to be compared
-        const current = myArray[i];
-        // Initialize a pointer for the previous element
-        let j = i - 1;
+        // Store the current element value to be compared
+        const currentValue = myArray[i];
+        // Initialize a pointer for the previous element index
+        let previousIndex = i - 1;
         // Move elements that are greater than the current element to one position ahead of their current position
-        while (j >= 0 && myArray[j] > current) {
-            myArray[j + 1] = myArray[j];
-            j--;
+        while (previousIndex >= 0 && myArray[previousIndex] > currentValue) {
+            myArray[previousIndex + 1] = myArray[previousIndex];
+            previousIndex--;
         }
         // Place the current element in its correct position
-        myArray[j + 1] = current;
+        myArray[previousIndex + 1] = currentValue;
     }
     return myArray;
-}
+};
 
 // Bubble sort
 const bubbleSort = (arr) => {
@@ -101,7 +102,7 @@ const bubbleSort = (arr) => {
         }
     }
     return myArray;
-}
+};
 
 // Selection sort
 const selectionSort = (arr) => {

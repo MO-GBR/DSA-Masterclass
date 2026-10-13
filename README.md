@@ -136,42 +136,43 @@ The repository also contains solutions to **Common LeetCode problems** covering 
 2. **Contains Duplicate**
 3. **Valid Anagram**
 4. **Best Time to Buy and Sell Stock**
+5. **Find the unique character**
 
 ### Strings & Two Pointers
 
-5. **Valid Palindrome**
-6. **Container With Most Water**
-7. **Longest Substring Without Repeating Characters**
+6. **Valid Palindrome**
+7. **Container With Most Water**
+8. **Longest Substring Without Repeating Characters**
 
 ### Stack
 
-8. **Valid Parentheses**
+9. **Valid Parentheses**
 
 ### Linked Lists
 
-9. **Reverse Linked List**
+10. **Reverse Linked List**
 
 ### Trees
 
-10. **Maximum Depth of Binary Tree**
+11. **Maximum Depth of Binary Tree**
 
 ### Heap / Selection
 
-11. **Kth Largest Element**
+12. **Kth Largest Element**
 
 ### Graphs
 
-12. **Number of Islands**
-13. **Course Schedule**
+13. **Number of Islands**
+14. **Course Schedule**
 
 ### Recursion / Backtracking
 
-14. **Subsets**
+15. **Subsets**
 
 ### Dynamic Programming
 
-15. **Climbing Stairs**
-16. **Coin Change**
+16. **Climbing Stairs**
+17. **Coin Change**
 
 These problems provide practical examples of applying DSA concepts to real problem-solving scenarios.
 
@@ -248,6 +249,7 @@ DSA-Masterclass/
 ├── LeetCode/
 │   ├── twoSum.js
 │   ├── containsDuplicate.js
+│   ├── findUniqueCharacter
 │   ├── validAnagram.js
 │   ├── bestTimeToBuyAndSellStock.js
 │   ├── validPalindrome.js
