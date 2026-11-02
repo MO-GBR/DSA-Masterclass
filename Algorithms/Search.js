@@ -1,6 +1,6 @@
 const numbers = [2, 3, 5, 4, 6, 10, 8, 1, 7, 9];
 // Sort the numbers array in ascending order for binary search
-const sortedNumbers = numbers.sort((a, b) => a - b);
+const sortedNumbers = numbers.toSorted((a, b) => a - b);
 
 const linearSearch = (arr, target) => {
     const myArray = [...arr];

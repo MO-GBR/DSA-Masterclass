@@ -9,38 +9,36 @@
         - Space: O(n)
 */
 
-function isValid(str) {
-	const stack = [];
-	
-	// Map each closing bracket to its matching opening bracket
-	const pairs = {
-	    ")": "(",
-	    "]": "[",
-	    "}": "{"
-	};
-	
-	// Process each character in the string
-	for (const char of str) {
-		// If it's an opening bracket, push it onto the stack
-	    if (char === "(" ||
-	        char === "[" ||
-	        char === "{") {
-	        stack.push(char);
-	    } else {
-			// If the stack is empty, there's no opening bracket
-			if(stack.length === 0) return false;
+function isValidParentheses(str) {
+    // Stack stores opening brackets
+    const stack = [];
 
-			// Look at the most recently opened bracket
-			const top = stack[stack.length - 1];
+    // Map closing brackets to their matching opening brackets
+    const pairs = {
+        ")": "(",
+        "]": "[",
+        "}": "{"
+    };
 
-			// If the bracket types don't match, the string is invalid
-		    if (top !== pairs[char]) return false;
+    for (const char of str) {
 
-			// The brackets match, so remove the opening bracket
-			stack.pop();
-	    }
-	}
-	return stack.length === 0;
-};
+        // If the character is an opening bracket, push it
+        if (char === "(" || char === "[" || char === "{") {
+            stack.push(char);
+        }
 
-console.log(isValid('{[()]}'), isValid('[){(')); // Output: true, false
+        // If the character is a closing bracket
+        else if (char in pairs) {
+            // Get the last opening bracket
+            const last = stack.pop();
+
+            // Check whether the brackets match
+            if (last !== pairs[char]) return false;
+        }
+    }
+
+    // Valid only if no unmatched opening brackets remain
+    return stack.length === 0;
+}
+
+console.log(isValidParentheses('{[()]}'), isValidParentheses('[){(')); // Output: true, false

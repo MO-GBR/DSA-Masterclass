@@ -137,42 +137,50 @@ The repository also contains solutions to **Common LeetCode problems** covering 
 3. **Valid Anagram**
 4. **Best Time to Buy and Sell Stock**
 5. **Find the unique character**
+6. **sentenceCapitalization**
+7. **arrayChunking**
+8. **Fizz Buzz**
+9. **wordsCounter**
 
 ### Strings & Two Pointers
 
-6. **Valid Palindrome**
-7. **Container With Most Water**
-8. **Longest Substring Without Repeating Characters**
+10. **Valid Palindrome**
+11. **Container With Most Water**
+12. **Longest Substring Without Repeating Characters**
 
 ### Stack
 
-9. **Valid Parentheses**
+13. **Valid Parentheses**
 
 ### Linked Lists
 
-10. **Reverse Linked List**
+14. **Reverse Linked List**
 
 ### Trees
 
-11. **Maximum Depth of Binary Tree**
+15. **Maximum Depth of Binary Tree**
 
 ### Heap / Selection
 
-12. **Kth Largest Element**
+16. **Kth Largest Element**
 
 ### Graphs
 
-13. **Number of Islands**
-14. **Course Schedule**
+17. **Number of Islands**
+18. **Course Schedule**
 
 ### Recursion / Backtracking
 
-15. **Subsets**
+19. **Subsets**
 
 ### Dynamic Programming
 
-16. **Climbing Stairs**
-17. **Coin Change**
+20. **Climbing Stairs**
+21. **Coin Change**
+
+### String & Number
+22. reverseString
+23. reverseNumber
 
 These problems provide practical examples of applying DSA concepts to real problem-solving scenarios.
 
