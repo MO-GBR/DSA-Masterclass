@@ -30,14 +30,12 @@ class DoublyLinkedList {
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
-            this.length++;
-            return this; // Return the list for chaining
-        }
-
-        // If the list is not empty, add the new node at the end and update the tail
-        this.tail.next = newNode; // Link the current tail to the new node
-        newNode.prev = this.tail; // Link the new node back to the current tail
-        this.tail = newNode; // Update the tail to the new node
+        } else {
+            // If the list is not empty, add the new node at the end and update the tail
+            this.tail.next = newNode; // Link the current tail to the new node
+            newNode.prev = this.tail; // Link the new node back to the current tail
+            this.tail = newNode; // Update the tail to the new node
+        };
 
         this.length++; // Increment the length of the list
         return this; // Return the list for chaining
@@ -47,20 +45,18 @@ class DoublyLinkedList {
     remove() {
         if(!this.head) return null; // If the list is empty, return null
 
+        const removedNode = this.tail; // Store the node to be removed
+
         // If the list has only one node, remove it and reset head and tail
         if(this.length === 1) {
-            const removedNode = this.head; // Store the node to be removed
             this.head = null; // Reset head to null
             this.tail = null; // Reset tail to null
-            this.length--; // Decrement the length of the list
-            return removedNode; // Return the removed node
-        }
+        } else {
+            this.tail = this.tail.prev; // Update the tail with the previous one
+            this.tail.next = null; // Set the new tail's next pointer to null
+            removedNode.prev = null; // Disconnect the removed node's previous pointer
+        };
 
-        // If the list has more than one node, remove the tail node
-        const removedNode = this.tail; // Store the node to be removed
-        this.tail = removedNode.prev; // Update the tail to the previous node
-        this.tail.next = null; // Set the new tail's next pointer to null
-        removedNode.prev = null; // Disconnect the removed node's previous pointer
         this.length--; // Decrement the length of the list
         return removedNode; // Return the removed node
     }
@@ -74,14 +70,11 @@ class DoublyLinkedList {
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
-            this.length++;
-            return this; // Return the list for chaining
-        }
-
-        // If the list is not empty, add the new node at the beginning and update the head
-        newNode.next = this.head; // Link the new node to the current head
-        this.head.prev = newNode; // Link the current head back to the new node
-        this.head = newNode; // Update the head to the new node
+        } else {
+            newNode.next = this.head; // Link the new node to the current head
+            this.head.prev = newNode; // Link the current head back to the new node
+            this.head = newNode; // Update the head to the new node
+        };
 
         this.length++; // Increment the length of the list
         return this; // Return the list for chaining
@@ -91,20 +84,18 @@ class DoublyLinkedList {
     removeFirst() {
         if(!this.head) return null; // If the list is empty, return null
 
+        const removedNode = this.head; // Store the node to be removed
+
         // If the list has only one node, remove it and reset head and tail
         if(this.length === 1) {
-            const removedNode = this.head; // Store the node to be removed
             this.head = null; // Reset head to null
             this.tail = null; // Reset tail to null
-            this.length--; // Decrement the length of the list
-            return removedNode; // Return the removed node
-        }
+        } else {
+            this.head = this.head.next; // Update the head with next node
+            this.head.prev = null; // Set the new head's previous pointer to null
+            removedNode.next = null; // Disconnect the removed node's next pointer
+        };
 
-        // If the list has more than one node, remove the head node
-        const removedNode = this.head; // Store the node to be removed
-        this.head = removedNode.next; // Update the head to the next node
-        this.head.prev = null; // Set the new head's previous pointer to null
-        removedNode.next = null; // Disconnect the removed node's next pointer
         this.length--; // Decrement the length of the list
         return removedNode; // Return the removed node
     }
@@ -139,14 +130,12 @@ class DoublyLinkedList {
         
         // If inserting at the beginning, use prepend
         if (index === 0) {
-            this.prepend(data);
-            return true;
+            return this.prepend(data);
         }
 
         // If inserting at the end, use append
         if (index === this.length) {
-            this.append(data);
-            return true;
+            return this.append(data);
         }
 
         // Create a new node with the given data

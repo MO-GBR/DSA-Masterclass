@@ -158,7 +158,16 @@ The repository also contains solutions to **Common LeetCode problems** covering 
 
 ### Trees
 
-15. **Maximum Depth of Binary Tree**
+15. **Binary Tree Operations:**
+    - Search
+    - Insert
+    - Delete
+    - Traversal
+    - Find Min & Max
+    - Height & depth
+    - Validate
+    - Lowest Common Ancestor
+    - Sum of all nodes
 
 ### Heap / Selection
 
@@ -266,7 +275,7 @@ DSA-Masterclass/
 │   ├── validParentheses.js
 │   ├── binarySearch.js
 │   ├── reverseLinkedList.js
-│   ├── maximumDepthOfBinaryTree.js
+│   ├── binaryTreeOperations.js
 │   ├── kthLargestElement.js
 │   ├── numberOfIslands.js
 │   ├── courseSchedule.js

@@ -23,17 +23,17 @@ class SinglyLinkedList {
     // Method to add a new node at the end of the list
     append(data) {
         const newNode = new Node(data); // Create a new node with the given data
+
         // If the list is empty, set both head and tail to the new node
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
-            this.length++;
-            return this; // Return the list for chaining
-        }
+        } else {
+            // If the list is not empty, add the new node at the end and update the tail
+            this.tail.next = newNode; // Link the current tail to the new node
+            this.tail = newNode; // Update the tail to the new node
+        };
 
-        // If the list is not empty, add the new node at the end and update the tail
-        this.tail.next = newNode; // Link the current tail to the new node
-        this.tail = newNode; // Update the tail to the new node
         this.length++; // Increment the length of the list
         return this; // Return the list for chaining
     }
@@ -72,15 +72,16 @@ class SinglyLinkedList {
     // Method to add a new node at the beginning of the list
     prepend(data) {
         const newNode = new Node(data); // Create a new node with the given data
+        
         // If the list is empty, set both head and tail to the new node
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
-        }
-
-        // If the list is not empty, add the new node at the beginning and update the head
-        newNode.next = this.head; // Link the new node to the current head
-        this.head = newNode; // Update the head to the new node
+        } else {
+            // If the list is not empty, add the new node at the beginning and update the head
+            newNode.next = this.head; // Link the new node to the current head
+            this.head = newNode; // Update the head to the new node
+        };
         
         this.length++; // Increment the length of the list
         return this; // Return the list for chaining
@@ -92,7 +93,15 @@ class SinglyLinkedList {
         if (!this.head) return null;
 
         const removedNode = this.head; // Store the node to be removed
-        this.head = this.head.next; // Update the head to the next node
+
+        if(this.length === 1) {
+            this.head = null; // If there is only one node in the list set the head to null
+            this.tail = null; // If there is only one node in the list set the tail to null
+        } else {
+            this.head = this.head.next; // Update the head to the next node
+            removed.next = null; // Remove the old link
+        };
+
         this.length--; // Decrement the length of the list
         return removedNode; // Return the removed node
     }
@@ -118,24 +127,25 @@ class SinglyLinkedList {
         }
 
         const newNode = new Node(data); // Create a new node with the given data
+
         if (index === 0) {
-            newNode.next = this.head; // Link the new node to the current head
-            this.head = newNode; // Update the head to the new node
-            // If the list was empty, also update the tail to the new node
-            if (this.length === 0) {
-                this.tail = newNode; // Update the tail to the new node
-            }
-            this.length++;
-            return this;
-        }
+            this.prepend(data);
+        };
+
+        if(index === this.length - 1) {
+            this.append(data);
+        };
 
         let current = this.head; // Start from the head
+
         // Traverse to the node before the desired index
         for (let i = 0; i < index - 1; i++) {
             current = current.next; // Move to the next node
         }
+
         newNode.next = current.next; // Link the new node to the next node
         current.next = newNode; // Update the current node's next pointer
+
         this.length++;
         return this;
     }
@@ -146,24 +156,19 @@ class SinglyLinkedList {
             throw new Error('Index out of bounds');
         }
 
-        // If removing the head node
         if (index === 0) {
-            const removedNode = this.head; // Store the node to be removed
-            this.head = this.head.next; // Update the head to the next node
-            // If the list becomes empty, also update the tail to null
-            if (this.length === 1) {
-                this.tail = null; // Update the tail to null
-            }
-            this.length--;
-            return removedNode;
-        }
+            this.removeFirst();
+        };
+
+        if(index === this.length - 1) {
+            this.remove();
+        };
 
         // If removing a node other than the head
         let current = this.head; // Start from the head
         // Traverse to the node before the desired index
         for (let i = 0; i < index - 1; i++) {
             current = current.next; // Move to the next node
-            
         }
         const removedNode = current.next; // Store the node to be removed
         current.next = current.next.next; // Update the current node's next pointer

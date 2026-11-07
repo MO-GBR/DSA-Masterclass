@@ -68,12 +68,12 @@ const jumps = [2, 3, 1, 1, 4];
 
 const canJump = (jumps) => {
     let maxReach = 0; // Initialize the maximum reachable index
+
     for (let i = 0; i < jumps.length; i++) {
-        if (i > maxReach) {
-            return false; // Current index is not reachable
-        }
+        if (i > maxReach) return false; // Current index is not reachable
         maxReach = Math.max(maxReach, i + jumps[i]); // Update the maximum reachable index
-    }
+    };
+    
     return true; // All indices are reachable
 }
 

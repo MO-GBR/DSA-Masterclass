@@ -46,9 +46,10 @@ class BST {
         if (this.root === null) {
             this.root = newNode;
             return this;
-        }
+        };
 
         let current = this.root;
+        
 	    while(true) {
             // Smaller values go to the left.
 	    	if(value < current.value) {
@@ -244,10 +245,10 @@ class BST {
             // Enqueue left child before right child.
             if (current.left) {
                 queue.push(current.left);
-            }
+            };
             if (current.right) {
                 queue.push(current.right);
-            }
+            };
         };
     
         return data;
